@@ -24,6 +24,16 @@ class Program
         {
             string result = Utility.ProcessString(input);
             Console.WriteLine("Результат: " + result);
+
+            var allChars = result.ToCharArray().ToList();
+            var groupedChars = allChars.GroupBy(c => c)
+                .Select(c => new { Char = c.Key, Count = c.Count() });
+
+            Console.WriteLine("\nКол-во вхождений символа в результат:");
+            foreach (var item in groupedChars)
+            {
+                Console.WriteLine($"Символ: \"{item.Char}\", Количество: {item.Count}");
+            }
         }
     }
 }
