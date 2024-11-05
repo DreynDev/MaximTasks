@@ -13,8 +13,17 @@ class Program
             return;
         }
 
-        string result = Utility.ProcessString(input);
-
-        Console.WriteLine("Результат: " + result);
+        var invalidChars = Utility.UnexpectedChars(input);
+        if (invalidChars.Count > 0)
+        {
+            var uniqueInvalidChars = invalidChars.Distinct().OrderBy(c => c)
+                .Select(c => $"\"{c}\"");
+            Console.WriteLine("Ошибка: были введены неподходящие символы: " + string.Join(", ", uniqueInvalidChars));
+        }
+        else
+        {
+            string result = Utility.ProcessString(input);
+            Console.WriteLine("Результат: " + result);
+        }
     }
 }
