@@ -17,18 +17,4 @@ public class Utility
         Array.Reverse(charArray);
         return new string(charArray);
     }
-    public static List<char> UnexpectedChars(string str)
-    {
-        var validChars = new HashSet<char>("abcdefghijklmnopqrstuvwxyz");
-        var invalidChars = new List<char>();
-
-        foreach (char c in str)
-        {
-            if (!validChars.Contains(c))
-            {
-                invalidChars.Add(c);
-            }
-        }
-        return invalidChars;
-    }
 }
