@@ -34,6 +34,9 @@ class Program
             {
                 Console.WriteLine($"Символ: \"{item.Char}\", Количество: {item.Count}");
             }
+
+            var GetLongestVowelSubstring = Utility.GetLongestVowelSubstring(result);
+            Console.Write($"\nСамая длинная подстрока начинающаяся и заканчивающаяся на гласную: {GetLongestVowelSubstring}");
         }
     }
 }

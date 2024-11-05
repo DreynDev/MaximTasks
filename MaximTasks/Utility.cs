@@ -30,4 +30,24 @@ public class Utility
         }
         return invalidChars;
     }
+    public static string GetLongestVowelSubstring(string str)
+    {
+        var vowelChars = "aeiouy";
+        var reversedText = ReverseString(str);
+        for (var i = 0; i < str.Length; i++)
+        {
+            if (vowelChars.Contains(str[i]))
+            {
+                for (var j = 0; j < reversedText.Length - i; j++)
+                {
+                    if (vowelChars.Contains(reversedText[j]))
+                    {
+                        int endIndex = str.Length - j - 1;
+                        return str.Substring(i, endIndex - i + 1);
+                    }
+                }
+            }
+        }
+        return string.Empty;
+    }
 }
