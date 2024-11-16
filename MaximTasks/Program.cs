@@ -1,4 +1,5 @@
 ﻿using MaximTasks;
+using MaximTasks.SortingAlgorithms;
 
 class Program
 {
@@ -14,6 +15,31 @@ class Program
         }
 
         var invalidChars = Utility.UnexpectedChars(input);
+
+        Console.WriteLine("Выберите алгоритм сортировки");
+        Console.WriteLine("1 - Быстрая сортировка (QuickSort)");
+        Console.WriteLine("2 - Сортировка деревом (TreeSort)");
+        Console.Write("Ваш выбор: ");
+
+        int choice = int.Parse(Console.ReadLine());
+
+        string sortedString = string.Empty;
+
+        string result = Utility.ProcessString(input);
+
+        switch (choice)
+        {
+            case 1:
+                sortedString = QuickSortClass.SortedString(result);
+                break;
+            case 2:
+                sortedString = TreeSortClass.SortedString(result);
+                break;
+            default:
+                Console.WriteLine("Некорректный выбор");
+                return;
+        }
+
         if (invalidChars.Count > 0)
         {
             var uniqueInvalidChars = invalidChars.Distinct().OrderBy(c => c)
@@ -22,7 +48,6 @@ class Program
         }
         else
         {
-            string result = Utility.ProcessString(input);
             Console.WriteLine("Результат: " + result);
 
             var allChars = result.ToCharArray().ToList();
@@ -36,7 +61,8 @@ class Program
             }
 
             var GetLongestVowelSubstring = Utility.GetLongestVowelSubstring(result);
-            Console.Write($"\nСамая длинная подстрока начинающаяся и заканчивающаяся на гласную: {GetLongestVowelSubstring}");
+            Console.WriteLine($"\nСамая длинная подстрока начинающаяся и заканчивающаяся на гласную: {GetLongestVowelSubstring}");
+            Console.WriteLine("Отсортированная обработанная строка: " + sortedString);
         }
     }
 }
