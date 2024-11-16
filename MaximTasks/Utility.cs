@@ -1,4 +1,6 @@
-﻿namespace MaximTasks;
+﻿
+
+namespace MaximTasks;
 
 public class Utility
 {
@@ -49,5 +51,13 @@ public class Utility
             }
         }
         return string.Empty;
+    }
+    public static int GetRandomNumber(int min, int max)
+    {
+        return Random.Shared.Next(min, max);
+    }
+    public static string RemoveRandomCharInString(string text, int index)
+    {
+        return text.Remove(index, 1);
     }
 }
