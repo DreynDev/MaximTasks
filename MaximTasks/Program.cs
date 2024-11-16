@@ -1,5 +1,6 @@
 ﻿using MaximTasks;
 using MaximTasks.SortingAlgorithms;
+using MaximTasks.Services;
 
 class Program
 {
@@ -39,6 +40,10 @@ class Program
                 Console.WriteLine("Некорректный выбор");
                 return;
         }
+        var randomNumbersGeneratorService = new RandomNumberGeneratorService();
+
+        var randomNumber = randomNumbersGeneratorService.GetRandomNumber(0, result.Length - 1).Result;
+        var cuttedString = Utility.RemoveRandomCharInString(result, randomNumber);
 
         if (invalidChars.Count > 0)
         {
@@ -63,6 +68,7 @@ class Program
             var GetLongestVowelSubstring = Utility.GetLongestVowelSubstring(result);
             Console.WriteLine($"\nСамая длинная подстрока начинающаяся и заканчивающаяся на гласную: {GetLongestVowelSubstring}");
             Console.WriteLine("Отсортированная обработанная строка: " + sortedString);
+            Console.WriteLine("«Урезанная» обработанная строка: " + cuttedString);
         }
     }
 }
