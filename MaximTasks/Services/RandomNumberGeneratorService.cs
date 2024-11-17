@@ -8,7 +8,7 @@ using MaximTasks.API;
 
 namespace MaximTasks.Services
 {
-    internal class RandomNumberGeneratorService
+    public class RandomNumberGeneratorService
     {
         private readonly RandomNumberApiClient _randomNumberApiClient;
 

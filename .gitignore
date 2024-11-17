@@ -1,3 +1,5 @@
 .vs/
 MaximTasks/bin/
 MaximTasks/obj/
+MaximTasks.Tests/bin/
+MaximTasks.Tests/obj/
