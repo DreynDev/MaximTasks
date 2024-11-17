@@ -15,6 +15,8 @@
         }
         public static string RandomAPI => _configuration["AppSettings:RandomAPI"];
         public static List<string> BlackList => _configuration.GetSection("AppSettings:BlackList").Get<List<string>>();
+        public static int ParallelLimit => _configuration.GetValue<int>("Settings:ParallelLimit");
+
     }
 
 }
