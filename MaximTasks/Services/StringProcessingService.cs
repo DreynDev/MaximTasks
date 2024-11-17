@@ -1,11 +1,11 @@
 ﻿using MaximTasks.SortingAlgorithms;
+using Microsoft.Extensions.Configuration;
 
 namespace MaximTasks.Services
 {
     public class StringProcessingService
     {
         private static readonly StringProcessingService _stringProcessingService = new StringProcessingService();
-
         private StringProcessingService() { }
 
         public static StringProcessingService Instance => _stringProcessingService;
@@ -45,6 +45,13 @@ namespace MaximTasks.Services
                     .Select(c => $"\"{c}\"");
                 throw new ArgumentException("Ошибка: были введены неподходящие символы: " + string.Join(", ", uniqueInvalidChars));
             }
+
+
+            if (AppSettings.BlackList.Contains(input))
+            {
+                throw new ArgumentException($"Ошибка: слово '{input}' входит в черный список.");
+            }
+
             else
             {
                 var allChars = result.ToCharArray().ToList();
