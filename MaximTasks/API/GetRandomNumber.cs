@@ -16,9 +16,10 @@ namespace MaximTasks.API
             _client = new HttpClient();
         }
 
+
         public async Task<int> GetRandomNumberAsync(int min, int max)
         {
-            string url = $"http://www.randomnumberapi.com/api/v1.0/random?min={min}&max={max}&count=1";
+            string url = $"{AppSettings.RandomAPI}?min={min}&max={max}&count=1";
 
             try
             {
