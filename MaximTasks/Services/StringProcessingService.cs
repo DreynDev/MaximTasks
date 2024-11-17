@@ -10,7 +10,7 @@ namespace MaximTasks.Services
 
         public static StringProcessingService Instance => _stringProcessingService;
 
-        public object ProcessString(string input, string sortType)
+        public dynamic ProcessString(string input, string sortType)
         {
             if (string.IsNullOrEmpty(input))
             {
